@@ -37,7 +37,7 @@ export function Reveal({ children, className, delay = 0, as = "div" }: RevealPro
           observer.disconnect();
         }
       },
-      { threshold: 0.15, rootMargin: "0px 0px -10% 0px" },
+      { threshold: 0, rootMargin: "0px 0px 10% 0px" },
     );
 
     observer.observe(el);
@@ -49,7 +49,7 @@ export function Reveal({ children, className, delay = 0, as = "div" }: RevealPro
   return (
     <Tag
       ref={ref}
-      className={cn(visible && "reveal", className)}
+      className={cn(!visible && "reveal-pending", visible && "reveal", className)}
       style={visible && delay ? { animationDelay: `${delay}ms` } : undefined}
     >
       {children}

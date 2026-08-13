@@ -139,6 +139,11 @@
   animation: reveal-up 0.9s var(--ease-expo) both;
 }
 
+@utility reveal-pending {
+  opacity: 0;
+  transform: translateY(18px);
+}
+
 @utility shell {
   margin-inline: auto;
   width: 100%;
