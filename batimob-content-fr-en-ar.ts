@@ -133,7 +133,7 @@ const fr: Dictionary = {
     form: { name: "Nom complet", email: "E-mail professionnel", company: "Société", message: "Votre projet", note: "En envoyant ce formulaire, vous acceptez d'être recontacté par nos équipes." },
     officesTitle: "Nos implantations",
     offices: [
-      { city: "Siège & atelier", lines: ["ZA Les Casernes", "39600 Arbois, France", "+33 (0)3 84 00 00 00"] },
+      { city: "Siège & atelier", lines: ["ZA Les Casernes", "39600 Arbois, France", "+33 (0)3 84 47 18 23"] },
       { city: "Bureau Paris", lines: ["12 rue de la Paix", "75002 Paris, France", "contact@batimob.net"] },
     ],
   },
@@ -249,7 +249,7 @@ const en: Dictionary = {
     form: { name: "Full name", email: "Work email", company: "Company", message: "Your project", note: "By submitting this form you agree to be contacted by our teams." },
     officesTitle: "Our locations",
     offices: [
-      { city: "Head office & workshop", lines: ["ZA Les Casernes", "39600 Arbois, France", "+33 (0)3 84 00 00 00"] },
+      { city: "Head office & workshop", lines: ["ZA Les Casernes", "39600 Arbois, France", "+33 (0)3 84 47 18 23"] },
       { city: "Paris office", lines: ["12 rue de la Paix", "75002 Paris, France", "contact@batimob.net"] },
     ],
   },
@@ -365,7 +365,7 @@ const ar: Dictionary = {
     form: { name: "الاسم الكامل", email: "البريد المهني", company: "الشركة", message: "مشروعك", note: "بإرسال هذا النموذج توافق على تواصل فرقنا معك." },
     officesTitle: "مواقعنا",
     offices: [
-      { city: "المقر والورشة", lines: ["ZA Les Casernes", "39600 أربوا، فرنسا", "+33 (0)3 84 00 00 00"] },
+      { city: "المقر والورشة", lines: ["ZA Les Casernes", "39600 أربوا، فرنسا", "+33 (0)3 84 47 18 23"] },
       { city: "مكتب باريس", lines: ["12 شارع لا بيه", "75002 باريس، فرنسا", "contact@batimob.net"] },
     ],
   },
