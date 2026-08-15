@@ -14,23 +14,29 @@ import { Partners } from "@/components/sections/partners";
 import { Testimonials } from "@/components/sections/testimonials";
 import { LatestNews } from "@/components/sections/latest-news";
 import { CtaBand } from "@/components/sections/cta-band";
+import { getFeaturedProject, getNews } from "@/lib/sanity";
 
 export const metadata: Metadata = buildMetadata(translations.fr, "home");
 
-export default function HomePage() {
+export default async function HomePage() {
+  const [featured, news] = await Promise.all([
+    getFeaturedProject(),
+    getNews(),
+  ]);
+
   return (
     <>
       <PageMeta page="home" />
       <Hero />
       <CompanyIntro />
       <Services />
-      <FeaturedProject />
+      <FeaturedProject project={featured} />
       <WhyChooseUs />
       <Stats />
       <Certifications />
       <Partners />
       <Testimonials />
-      <LatestNews />
+      <LatestNews news={news} />
       <CtaBand />
     </>
   );

@@ -4,9 +4,27 @@ import { useI18n } from "@/components/providers";
 import { Reveal } from "@/components/reveal";
 import { SectionHeading } from "@/components/section-heading";
 import { ArrowLink } from "@/components/cta";
+import type { SanityNews } from "@/lib/sanity";
+import type { Locale } from "@/lib/translations";
 
-export function LatestNews() {
-  const { t } = useI18n();
+function getLocalizedTitle(news: SanityNews, locale: Locale): string {
+  if (locale === "en") return news.titleEn;
+  if (locale === "ar") return news.titleAr;
+  return news.titleFr;
+}
+
+function getLocalizedText(news: SanityNews, locale: Locale): string {
+  if (locale === "en") return news.textEn;
+  if (locale === "ar") return news.textAr;
+  return news.textFr;
+}
+
+type LatestNewsProps = {
+  news: SanityNews[];
+};
+
+export function LatestNews({ news }: LatestNewsProps) {
+  const { t, locale } = useI18n();
 
   return (
     <section className="bg-muted py-24 sm:py-32">
@@ -21,8 +39,8 @@ export function LatestNews() {
         </Reveal>
 
         <div className="mt-14 grid gap-6 md:grid-cols-3">
-          {t.news.items.map((item, index) => (
-            <Reveal key={item.title} delay={(index % 3) * 80}>
+          {news.slice(0, 3).map((item, index) => (
+            <Reveal key={item._id} delay={(index % 3) * 80}>
               <article className="flex h-full flex-col rounded-2xl border border-border bg-card p-8 shadow-card transition-shadow duration-300 ease-[var(--ease-expo)] hover:shadow-lift">
                 <div className="flex items-center gap-3">
                   <span className="hairline text-muted-foreground">
@@ -33,10 +51,10 @@ export function LatestNews() {
                   </span>
                 </div>
                 <h3 className="mt-5 text-lg font-medium leading-snug">
-                  {item.title}
+                  {getLocalizedTitle(item, locale)}
                 </h3>
                 <p className="mt-3 flex-1 leading-relaxed text-muted-foreground">
-                  {item.text}
+                  {getLocalizedText(item, locale)}
                 </p>
               </article>
             </Reveal>
