@@ -3,7 +3,16 @@ import { sanityWriteClient } from "@/lib/sanity";
 import { Resend } from "resend";
 
 const resend = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KEY) : null;
-const CONTACT_EMAIL = "adnanemektani02@gmail.com";
+const CONTACT_EMAIL = process.env.CONTACT_EMAIL ?? "contact@batimob.net";
+
+function escapeHtml(str: string): string {
+  return str
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
+}
 
 export async function POST(request: Request) {
   try {
@@ -41,12 +50,12 @@ export async function POST(request: Request) {
           <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto;">
             <h2 style="color: #333;">Nouvelle demande de contact</h2>
             <table style="width: 100%; border-collapse: collapse;">
-              <tr><td style="padding: 8px 0; color: #666; width: 120px;">Nom</td><td style="padding: 8px 0; color: #333;">${name}</td></tr>
-              <tr><td style="padding: 8px 0; color: #666;">Email</td><td style="padding: 8px 0; color: #333;"><a href="mailto:${email}">${email}</a></td></tr>
-              ${company ? `<tr><td style="padding: 8px 0; color: #666;">Société</td><td style="padding: 8px 0; color: #333;">${company}</td></tr>` : ""}
+              <tr><td style="padding: 8px 0; color: #666; width: 120px;">Nom</td><td style="padding: 8px 0; color: #333;">${escapeHtml(name)}</td></tr>
+              <tr><td style="padding: 8px 0; color: #666;">Email</td><td style="padding: 8px 0; color: #333;"><a href="mailto:${escapeHtml(email)}">${escapeHtml(email)}</a></td></tr>
+              ${company ? `<tr><td style="padding: 8px 0; color: #666;">Société</td><td style="padding: 8px 0; color: #333;">${escapeHtml(company)}</td></tr>` : ""}
             </table>
             <div style="margin-top: 16px; padding: 16px; background: #f5f5f5; border-radius: 8px; color: #333;">
-              ${message.replace(/\n/g, "<br>")}
+              ${escapeHtml(message).replace(/\n/g, "<br>")}
             </div>
             <p style="margin-top: 16px; font-size: 12px; color: #999;">
               Voir dans <a href="https://batimob-studio.sanity.studio">Sanity Studio</a>
