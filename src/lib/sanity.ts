@@ -13,7 +13,7 @@ export const sanityClient = createClient({
   projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID ?? '7vrdobo0',
   dataset: process.env.NEXT_PUBLIC_SANITY_DATASET ?? 'production',
   apiVersion: '2024-01-01',
-  useCdn: true,
+  useCdn: false,
 })
 
 export const sanityWriteClient = createClient({
@@ -34,7 +34,9 @@ export type SanityProject = {
   _id: string
   slug: {current: string}
   featured: boolean
-  image: SanityImageSource
+  title?: string
+  images?: SanityImageSource[]
+  image?: SanityImageSource
   nameFr: string
   nameEn: string
   nameAr: string
@@ -43,6 +45,26 @@ export type SanityProject = {
   textFr: string
   textEn: string
   textAr: string
+}
+
+export type SanityService = {
+  _id: string
+  slug: {current: string}
+  titleFr: string
+  titleEn: string
+  titleAr: string
+  images?: SanityImageSource[]
+  logo?: SanityImageSource
+  textFr: string
+  textEn: string
+  textAr: string
+  order?: number
+}
+
+export function projectImages(project: SanityProject): SanityImageSource[] {
+  if (project.images && project.images.length > 0) return project.images
+  if (project.image) return [project.image]
+  return []
 }
 
 export type SanityNews = {
@@ -67,4 +89,17 @@ export async function getFeaturedProject(): Promise<SanityProject | null> {
 
 export async function getNews(): Promise<SanityNews[]> {
   return sanityClient.fetch(`*[_type == "news"] | order(_createdAt desc)`)
+}
+
+export async function getServices(): Promise<SanityService[]> {
+  return sanityClient.fetch(`*[_type == "service"] | order(_createdAt desc)`)
+}
+
+export async function getServiceBySlug(
+  slug: string,
+): Promise<SanityService | null> {
+  return sanityClient.fetch(
+    `*[_type == "service" && slug.current == $slug][0]`,
+    { slug },
+  )
 }

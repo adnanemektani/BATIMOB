@@ -14,14 +14,17 @@ import { Partners } from "@/components/sections/partners";
 import { Testimonials } from "@/components/sections/testimonials";
 import { LatestNews } from "@/components/sections/latest-news";
 import { CtaBand } from "@/components/sections/cta-band";
-import { getFeaturedProject, getNews } from "@/lib/sanity";
+import { getFeaturedProject, getNews, getServices } from "@/lib/sanity";
+
+export const revalidate = 60;
 
 export const metadata: Metadata = buildMetadata(translations.fr, "home");
 
 export default async function HomePage() {
-  const [featured, news] = await Promise.all([
+  const [featured, news, services] = await Promise.all([
     getFeaturedProject(),
     getNews(),
+    getServices(),
   ]);
 
   return (
@@ -29,7 +32,7 @@ export default async function HomePage() {
       <PageMeta page="home" />
       <Hero />
       <CompanyIntro />
-      <Services />
+      <Services services={services} />
       <FeaturedProject project={featured} />
       <WhyChooseUs />
       <Stats />

@@ -112,7 +112,7 @@ const fr: Dictionary = {
     links: ["À propos", "Services", "Projets", "Actualités"],
     legalLinks: ["Mentions légales", "Confidentialité"],
     address: "ZA Les Casernes, 39600 Arbois, France\nBureau Paris : 12 rue de la Paix, 75002 Paris",
-    rights: "© 2026 Batimob SAS",
+    rights: `© ${new Date().getFullYear()} Batimob`,
   },
   about: {
     title: "Un savoir-faire né dans le Jura",
@@ -228,7 +228,7 @@ const en: Dictionary = {
     links: ["About", "Services", "Projects", "News"],
     legalLinks: ["Legal notice", "Privacy"],
     address: "ZA Les Casernes, 39600 Arbois, France\nParis office: 12 rue de la Paix, 75002 Paris",
-    rights: "© 2026 Batimob SAS",
+    rights: `© ${new Date().getFullYear()} Batimob`,
   },
   about: {
     title: "A craft born in the Jura",
@@ -344,7 +344,7 @@ const ar: Dictionary = {
     links: ["من نحن", "الخدمات", "المشاريع", "الأخبار"],
     legalLinks: ["إشعار قانوني", "الخصوصية"],
     address: "ZA Les Casernes، 39600 أربوا، فرنسا\nمكتب باريس: 12 شارع لا بيه، 75002 باريس",
-    rights: "© 2026 Batimob SAS",
+    rights: `© ${new Date().getFullYear()} Batimob`,
   },
   about: {
     title: "حرفة وُلدت في جورا",

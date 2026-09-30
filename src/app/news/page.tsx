@@ -7,6 +7,8 @@ import { getNews } from "@/lib/sanity";
 
 export const metadata: Metadata = buildMetadata(translations.fr, "news");
 
+export const revalidate = 60;
+
 export default async function NewsPage() {
   const news = await getNews();
 

@@ -26,6 +26,8 @@ type LatestNewsProps = {
 export function LatestNews({ news }: LatestNewsProps) {
   const { t, locale } = useI18n();
 
+  if (news.length === 0) return null;
+
   return (
     <section className="bg-muted py-24 sm:py-32">
       <div className="shell">

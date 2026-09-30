@@ -1,14 +1,14 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 
 import { useI18n } from "@/components/providers";
 import { PageMeta } from "@/components/page-meta";
 import { Reveal } from "@/components/reveal";
+import { ImageCarousel } from "@/components/image-carousel";
 import { cn } from "@/lib/utils";
-import { urlFor, type SanityProject } from "@/lib/sanity";
+import { urlFor, projectImages, type SanityProject } from "@/lib/sanity";
 import type { Locale } from "@/lib/translations";
 
 const PAGE_SIZE = 6;
@@ -40,11 +40,12 @@ export function ProjectsContent({ projects, featured }: ProjectsContentProps) {
     [projects],
   );
 
-  const nonFeatured = projects.filter((p) => !p.featured);
-  const showFeatured = featured && (filter === "all" || filter === featured.sector);
-  const gridItems = nonFeatured.filter(
-    (item) => filter === "all" || item.sector === filter,
-  );
+  const lead = projects[0] ?? featured;
+  const showFeatured =
+    lead && (filter === "all" || filter === lead.sector);
+  const gridItems = projects
+    .filter((item) => item !== lead)
+    .filter((item) => filter === "all" || item.sector === filter);
 
   const visibleItems = gridItems.slice(0, visibleCount);
   const hasMore = visibleCount < gridItems.length;
@@ -101,36 +102,35 @@ export function ProjectsContent({ projects, featured }: ProjectsContentProps) {
         </Reveal>
 
         <div className="mt-14">
-          {showFeatured && featured && (
+          {showFeatured && lead && (
             <Reveal>
               <article
-                id={featured.slug.current}
+                id={lead.slug.current}
                 className="grid items-center gap-10 rounded-2xl border border-border bg-card p-6 shadow-card sm:p-10 lg:grid-cols-2 lg:gap-14"
               >
                 <div className="relative aspect-[16/10] overflow-hidden rounded-2xl sm:aspect-[4/3]">
-                  <Image
-                    src={urlFor(featured.image).width(1200).height(900).url()}
-                    alt={getLocalizedName(featured, locale)}
-                    width={1200}
-                    height={900}
-                    sizes="(max-width: 1024px) 100vw, 50vw"
-                    className="h-full w-full rounded-2xl object-cover"
+                  <ImageCarousel
+                    images={projectImages(lead).map((image) =>
+                      urlFor(image).width(1200).height(900).url(),
+                    )}
+                    alt={getLocalizedName(lead, locale)}
+                    className="absolute inset-0"
                   />
                 </div>
                 <div>
                   <div className="flex items-center gap-8">
                     <span className="hairline text-muted-foreground">
-                      {featured.sector}
+                      {lead.sector}
                     </span>
                     <span className="hairline text-muted-foreground">
-                      {featured.year}
+                      {lead.year}
                     </span>
                   </div>
                   <h2 className="mt-5 font-display text-3xl leading-tight text-balance sm:text-4xl">
-                    {getLocalizedName(featured, locale)}
+                    {getLocalizedName(lead, locale)}
                   </h2>
                   <p className="mt-5 text-lg leading-relaxed text-muted-foreground">
-                    {getLocalizedText(featured, locale)}
+                    {getLocalizedText(lead, locale)}
                   </p>
                 </div>
               </article>
@@ -145,13 +145,13 @@ export function ProjectsContent({ projects, featured }: ProjectsContentProps) {
                   className="group flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-card transition-shadow duration-300 ease-[var(--ease-expo)] hover:shadow-lift"
                 >
                   <div className="relative aspect-[4/3] overflow-hidden">
-                    <Image
-                      src={urlFor(item.image).width(1200).height(900).url()}
+                    <ImageCarousel
+                      images={projectImages(item).map((image) =>
+                        urlFor(image).width(1200).height(900).url(),
+                      )}
                       alt={getLocalizedName(item, locale)}
-                      width={1200}
-                      height={900}
-                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                      className="h-full w-full rounded-t-2xl object-cover transition-transform duration-300 ease-[var(--ease-expo)] group-hover:scale-[1.02]"
+                      className="absolute inset-0"
+                      imageClassName="rounded-t-2xl"
                     />
                   </div>
                   <div className="flex flex-1 flex-col p-7">

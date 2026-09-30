@@ -3,7 +3,11 @@
 import Image from "next/image";
 import Link from "next/link";
 
+import { ArrowUpRight } from "lucide-react";
+
 import { useI18n } from "@/components/providers";
+
+const LINKEDIN_URL = "https://www.linkedin.com/in/louis-beyer-3452453";
 
 const COMPANY_LINKS = [
   { href: "/about", index: 0 },
@@ -108,13 +112,28 @@ export function Footer() {
 
       <div className="border-t border-canvas/10">
         <div className="shell flex flex-col gap-4 py-6 sm:flex-row sm:items-center sm:justify-between">
-          <p className="text-xs text-canvas/50">{t.footer.rights}</p>
+          <p className="text-xs text-canvas/50">
+            {t.footer.rights.replace(/\d{4}/, String(new Date().getFullYear()))}
+          </p>
           <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
             {LEGAL_LINKS.map(({ index }) => (
               <span key={index} className="text-xs text-canvas/50">
                 {t.footer.legalLinks[index]}
               </span>
             ))}
+            <a
+              href={LINKEDIN_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 rounded-full border border-canvas/20 px-3 py-1.5 text-xs text-canvas/70 transition-colors hover:border-canvas/50 hover:text-canvas focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-canvas/60"
+            >
+              LinkedIn
+              <ArrowUpRight
+                aria-hidden="true"
+                className="size-3.5"
+                strokeWidth={1.75}
+              />
+            </a>
           </div>
         </div>
       </div>

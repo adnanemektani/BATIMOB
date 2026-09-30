@@ -1,12 +1,12 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 
 import { useI18n } from "@/components/providers";
 import { Reveal } from "@/components/reveal";
 import { ArrowLink } from "@/components/cta";
-import { urlFor, type SanityProject } from "@/lib/sanity";
+import { ImageCarousel } from "@/components/image-carousel";
+import { urlFor, projectImages, type SanityProject } from "@/lib/sanity";
 import type { Locale } from "@/lib/translations";
 
 function getLocalizedName(project: SanityProject, locale: Locale): string {
@@ -67,13 +67,12 @@ export function FeaturedProject({ project }: FeaturedProjectProps) {
         <Reveal delay={120}>
           <Link href="/projects" className="group block" aria-label={getLocalizedName(project, locale)}>
             <div className="relative aspect-[3/4] overflow-hidden rounded-2xl shadow-card transition-shadow duration-300 ease-[var(--ease-expo)] group-hover:shadow-lift">
-              <Image
-                src={urlFor(project.image).width(1200).height(1600).url()}
+              <ImageCarousel
+                images={projectImages(project).map((image) =>
+                  urlFor(image).width(1200).height(1600).url(),
+                )}
                 alt={getLocalizedName(project, locale)}
-                width={1200}
-                height={1600}
-                sizes="(max-width: 1024px) 100vw, 46vw"
-                className="h-full w-full rounded-2xl object-cover transition-transform duration-300 ease-[var(--ease-expo)] group-hover:scale-[1.02]"
+                className="absolute inset-0"
               />
             </div>
           </Link>

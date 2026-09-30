@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import Script from "next/script";
 
 import "./globals.css";
 import { I18nProvider } from "@/components/providers";
@@ -62,6 +63,13 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-screen bg-background text-foreground antialiased">
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-FBFRHN6M20"
+          strategy="afterInteractive"
+        />
+        <Script id="gtag-init" strategy="afterInteractive">
+          {`window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-FBFRHN6M20');`}
+        </Script>
         <I18nProvider>
           <a
             href="#main"
