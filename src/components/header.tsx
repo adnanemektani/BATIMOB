@@ -7,6 +7,8 @@ import { Menu } from "lucide-react";
 
 import { useI18n } from "@/components/providers";
 import { LocaleSwitcher } from "@/components/locale-switcher";
+import { LinkedInIcon } from "@/components/icons/linkedin";
+import { LINKEDIN_URL } from "@/lib/links";
 import {
   Sheet,
   SheetClose,
@@ -68,6 +70,15 @@ export function Header() {
 
         <div className="flex items-center gap-3">
           <LocaleSwitcher />
+          <a
+            href={LINKEDIN_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="LinkedIn"
+            className="hidden size-10 place-items-center rounded-full border border-border bg-background text-muted-foreground transition-colors duration-300 ease-[var(--ease-expo)] hover:bg-muted hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring md:grid"
+          >
+            <LinkedInIcon className="size-4" />
+          </a>
           <Link
             href="/contact"
             className="hidden items-center justify-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground shadow-card transition-shadow duration-300 ease-[var(--ease-expo)] hover:shadow-lift focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background md:inline-flex"
@@ -121,6 +132,17 @@ export function Header() {
                   >
                     {t.nav.contact}
                   </Link>
+                </SheetClose>
+                <SheetClose asChild>
+                  <a
+                    href={LINKEDIN_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="LinkedIn"
+                    className="mt-3 grid size-11 place-items-center self-center rounded-full border border-border bg-background text-muted-foreground transition-colors hover:bg-muted hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring"
+                  >
+                    <LinkedInIcon className="size-4" />
+                  </a>
                 </SheetClose>
               </nav>
             </SheetContent>

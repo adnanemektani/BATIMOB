@@ -43,7 +43,7 @@ export function ServicesContent({ services }: ServicesContentProps) {
             return (
               <Reveal key={item._id}>
                 <Link
-                  href={`/services/${slug}`}
+                  href={`/services/${encodeURIComponent(slug)}`}
                   className="group grid gap-6 border-b border-foreground/15 py-12 lg:grid-cols-12 lg:gap-10 lg:py-16"
                 >
                   <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-timber-deep lg:col-span-2 lg:pt-1">

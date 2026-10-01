@@ -10,6 +10,19 @@ type Params = { params: Promise<{ slug: string }> };
 
 export const revalidate = 60;
 
+/**
+ * Next.js peut transmettre le slug encore encodé (ex: `service%201` au lieu de
+ * `service 1`), ce qui faisait échouer la recherche dans Sanity et renvoyer un 404.
+ * On décode donc systématiquement le segment avant de l'utiliser.
+ */
+function readSlug(raw: string): string {
+  try {
+    return decodeURIComponent(raw).trim();
+  } catch {
+    return raw.trim();
+  }
+}
+
 export async function generateStaticParams() {
   const services = await getServices();
   return services
@@ -21,7 +34,8 @@ export async function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: Params): Promise<Metadata> {
-  const { slug } = await params;
+  const slug = readSlug((await params).slug);
+  const canonical = encodeURI(`https://www.batimob.net/services/${slug}`);
 
   const fallback = isServiceSlug(slug) ? SERVICE_FALLBACK[slug] : null;
   const meta = fallback
@@ -40,12 +54,12 @@ export async function generateMetadata({
   return {
     title,
     description,
-    alternates: { canonical: `https://www.batimob.net/services/${slug}` },
+    alternates: { canonical },
     openGraph: {
       title,
       description,
       type: "website",
-      url: `https://www.batimob.net/services/${slug}`,
+      url: canonical,
       siteName: "Batimob",
       locale: "fr_FR",
       images: imageUrl
@@ -62,7 +76,7 @@ export async function generateMetadata({
 }
 
 export default async function ServiceDetailPage({ params }: Params) {
-  const { slug } = await params;
+  const slug = readSlug((await params).slug);
 
   const service = await getServiceBySlug(slug);
   if (!service) notFound();

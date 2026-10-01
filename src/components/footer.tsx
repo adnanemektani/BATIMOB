@@ -6,8 +6,7 @@ import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 
 import { useI18n } from "@/components/providers";
-
-const LINKEDIN_URL = "https://www.linkedin.com/in/louis-beyer-3452453";
+import { LINKEDIN_URL } from "@/lib/links";
 
 const COMPANY_LINKS = [
   { href: "/about", index: 0 },

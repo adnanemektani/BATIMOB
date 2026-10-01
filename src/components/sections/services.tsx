@@ -34,7 +34,7 @@ export function Services({ services }: ServicesProps) {
             return (
               <Reveal key={item._id} delay={(index % 3) * 80}>
                 <Link
-                  href={`/services/${slug}`}
+                  href={`/services/${encodeURIComponent(slug)}`}
                   className="group flex h-full flex-col rounded-2xl border border-border bg-card p-8 shadow-card transition-shadow duration-300 ease-[var(--ease-expo)] hover:shadow-lift"
                 >
                   <div className="flex items-start justify-between gap-4">
