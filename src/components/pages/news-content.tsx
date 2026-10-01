@@ -1,12 +1,15 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
 
 import { useI18n } from "@/components/providers";
 import { PageMeta } from "@/components/page-meta";
 import { Reveal } from "@/components/reveal";
 import { CtaBand } from "@/components/sections/cta-band";
-import type { SanityNews } from "@/lib/sanity";
+import { isUsableImage, newsKey, urlFor, type SanityNews } from "@/lib/sanity";
 import type { Locale } from "@/lib/translations";
 
 const PAGE_SIZE = 6;
@@ -55,7 +58,10 @@ export function NewsContent({ news }: NewsContentProps) {
         <div className="mx-auto max-w-3xl border-t border-foreground/15">
           {visibleItems.map((item, index) => (
             <Reveal key={item._id} delay={(index % 2) * 80}>
-              <article className="border-b border-foreground/15 py-12">
+              <Link
+                href={`/news/${encodeURIComponent(newsKey(item))}`}
+                className="group block border-b border-foreground/15 py-12"
+              >
                 <div className="flex items-center gap-4">
                   <span className="hairline text-muted-foreground">
                     {item.date}
@@ -64,13 +70,39 @@ export function NewsContent({ news }: NewsContentProps) {
                     {item.category}
                   </span>
                 </div>
-                <h2 className="mt-5 font-display text-2xl leading-snug text-balance sm:text-3xl">
+                {isUsableImage(item.image) && (
+                  <div className="relative mt-6 aspect-[16/10] overflow-hidden rounded-2xl bg-muted">
+                    <Image
+                      src={urlFor(item.image).width(1200).url()}
+                      alt={getLocalizedTitle(item, locale)}
+                      fill
+                      sizes="(max-width: 768px) 100vw, 768px"
+                      className="object-cover transition-transform duration-700 ease-[var(--ease-expo)] group-hover:scale-[1.03]"
+                    />
+                  </div>
+                )}
+                <h2 className="mt-5 font-display text-2xl leading-snug text-balance transition-colors duration-300 group-hover:text-timber-deep sm:text-3xl">
                   {getLocalizedTitle(item, locale)}
                 </h2>
-                <p className="mt-4 text-base leading-relaxed text-muted-foreground">
+                <p className="mt-4 text-base leading-relaxed text-muted-foreground line-clamp-3">
                   {getLocalizedText(item, locale)}
                 </p>
-              </article>
+                <div className="mt-5 flex flex-wrap items-center gap-4">
+                  <span className="inline-flex items-center gap-2 text-sm font-medium text-foreground">
+                    {t.actions.readMore}
+                    <ArrowRight
+                      className="size-4 transition-transform duration-300 ease-[var(--ease-expo)] group-hover:translate-x-1 rtl:group-hover:-translate-x-1 rtl:rotate-180"
+                      aria-hidden="true"
+                    />
+                  </span>
+                  {item.url?.trim() && (
+                    <span className="inline-flex items-center gap-1.5 rounded-full border border-border px-3 py-1 text-xs font-medium text-muted-foreground">
+                      {t.actions.viewLink}
+                      <ArrowUpRight className="size-3.5" aria-hidden="true" />
+                    </span>
+                  )}
+                </div>
+              </Link>
             </Reveal>
           ))}
         </div>

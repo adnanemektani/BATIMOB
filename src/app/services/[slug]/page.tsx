@@ -3,25 +3,13 @@ import { notFound } from "next/navigation";
 
 import { translations } from "@/lib/translations";
 import { ServiceDetailContent } from "@/components/pages/service-detail-content";
-import { getServiceBySlug, getServices, urlFor } from "@/lib/sanity";
+import { getServiceBySlug, getServices, usableImages, urlFor } from "@/lib/sanity";
 import { isServiceSlug, SERVICE_FALLBACK } from "@/lib/services";
+import { readSlug } from "@/lib/slug";
 
 type Params = { params: Promise<{ slug: string }> };
 
 export const revalidate = 60;
-
-/**
- * Next.js peut transmettre le slug encore encodé (ex: `service%201` au lieu de
- * `service 1`), ce qui faisait échouer la recherche dans Sanity et renvoyer un 404.
- * On décode donc systématiquement le segment avant de l'utiliser.
- */
-function readSlug(raw: string): string {
-  try {
-    return decodeURIComponent(raw).trim();
-  } catch {
-    return raw.trim();
-  }
-}
 
 export async function generateStaticParams() {
   const services = await getServices();
@@ -47,8 +35,9 @@ export async function generateMetadata({
   const service = (await getServiceBySlug(slug)) ?? null;
   const title = service?.titleFr || meta?.title || "Batimob";
   const description = service?.textFr || meta?.text;
-  const imageUrl = service?.images?.[0]
-    ? urlFor(service.images[0]).width(1200).height(630).url()
+  const leadImage = usableImages(service?.images)[0];
+  const imageUrl = leadImage
+    ? urlFor(leadImage).width(1200).height(630).url()
     : fallback?.image;
 
   return {

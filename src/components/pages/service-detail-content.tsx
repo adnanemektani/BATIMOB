@@ -9,7 +9,7 @@ import { CtaBand } from "@/components/sections/cta-band";
 import { ImageCarousel } from "@/components/image-carousel";
 import { ServiceIcon } from "@/components/service-icons";
 import { cn } from "@/lib/utils";
-import { urlFor, type SanityService } from "@/lib/sanity";
+import { urlFor, isUsableImage, usableImages, type SanityService } from "@/lib/sanity";
 import {
   iconIndexForSlug,
   serviceText,
@@ -33,11 +33,11 @@ export function ServiceDetailContent({ slug, service }: ServiceDetailContentProp
   const title = serviceTitle(service, locale);
   const text = serviceText(service, locale);
 
-  const images = service.images?.length
-    ? service.images.map((image) =>
-        urlFor(image).width(1600).height(1100).url(),
-      )
-    : totalImageFallback(slug);
+  const ownImages = usableImages(service.images).map((image) =>
+    urlFor(image).width(1600).height(1100).url(),
+  );
+  const images = ownImages.length > 0 ? ownImages : totalImageFallback(slug);
+  const logo = isUsableImage(service.logo) ? service.logo : null;
 
   return (
     <>
@@ -47,11 +47,11 @@ export function ServiceDetailContent({ slug, service }: ServiceDetailContentProp
         <Reveal>
           <p className="eyebrow text-timber-deep">{t.services.title}</p>
         </Reveal>
-        {service.logo && (
+        {logo && (
           <Reveal delay={40}>
             <div className="mt-8">
               <Image
-                src={urlFor(service.logo).width(480).url()}
+                src={urlFor(logo).width(480).url()}
                 alt={title}
                 width={480}
                 height={160}

@@ -13,7 +13,7 @@ type Testimonial = { quote: string; author: string; role: string };
 
 export type Dictionary = {
   nav: { home: string; about: string; services: string; projects: string; news: string; contact: string };
-  actions: { contact: string; allServices: string; allProjects: string; allNews: string; discover: string; quote: string; brochure: string; send: string };
+  actions: { contact: string; allServices: string; allProjects: string; allNews: string; discover: string; quote: string; brochure: string; send: string; readMore: string; viewLink: string; backNews: string; backProjects: string };
   hero: { eyebrow: string; title: string; lead: string; imageAlt: string };
   intro: { eyebrow: string; title: string; text: string; tags: string[] };
   services: { title: string; lead: string; items: Item[] };
@@ -33,7 +33,7 @@ export type Dictionary = {
 
 const fr: Dictionary = {
   nav: { home: "Accueil", about: "À propos", services: "Services", projects: "Projets", news: "Actualités", contact: "Contact" },
-  actions: { contact: "Contact", allServices: "Voir tous les services", allProjects: "Voir tous les projets", allNews: "Toutes les actualités", discover: "Découvrir le projet", quote: "Demander un devis", brochure: "Consulter nos plaquettes", send: "Envoyer la demande" },
+  actions: { contact: "Contact", allServices: "Voir tous les services", allProjects: "Voir tous les projets", allNews: "Toutes les actualités", discover: "Découvrir le projet", quote: "Demander un devis", brochure: "Consulter nos plaquettes", send: "Envoyer la demande", readMore: "Lire la suite", viewLink: "Voir le lien", backNews: "Retour aux actualités", backProjects: "Retour aux projets" },
   hero: {
     eyebrow: "Depuis 1966 — Jura, France",
     title: "L'ingénierie du bois, la précision du détail pour les espaces d'exception.",
@@ -134,7 +134,7 @@ const fr: Dictionary = {
     officesTitle: "Nos implantations",
     offices: [
       { city: "Siège & atelier", lines: ["ZA Les Casernes", "39600 Arbois, France", "+33 (0)3 84 47 18 23"] },
-      { city: "Bureau Paris", lines: ["12 rue de la Paix", "75002 Paris, France", "contact@batimob.net"] },
+      { city: "Bureau Paris", lines: ["12 rue de la Paix", "75002 Paris, France", "l.beyer@batimob.net"] },
     ],
   },
   meta: {
@@ -149,7 +149,7 @@ const fr: Dictionary = {
 
 const en: Dictionary = {
   nav: { home: "Home", about: "About", services: "Services", projects: "Projects", news: "News", contact: "Contact" },
-  actions: { contact: "Contact", allServices: "View all services", allProjects: "View all projects", allNews: "All news", discover: "Explore the project", quote: "Request a quote", brochure: "Download our brochure", send: "Send enquiry" },
+  actions: { contact: "Contact", allServices: "View all services", allProjects: "View all projects", allNews: "All news", discover: "Explore the project", quote: "Request a quote", brochure: "Download our brochure", send: "Send enquiry", readMore: "Read more", viewLink: "View link", backNews: "Back to news", backProjects: "Back to projects" },
   hero: {
     eyebrow: "Since 1966 — Jura, France",
     title: "Timber engineering and absolute detail for exceptional spaces.",
@@ -250,7 +250,7 @@ const en: Dictionary = {
     officesTitle: "Our locations",
     offices: [
       { city: "Head office & workshop", lines: ["ZA Les Casernes", "39600 Arbois, France", "+33 (0)3 84 47 18 23"] },
-      { city: "Paris office", lines: ["12 rue de la Paix", "75002 Paris, France", "contact@batimob.net"] },
+      { city: "Paris office", lines: ["12 rue de la Paix", "75002 Paris, France", "l.beyer@batimob.net"] },
     ],
   },
   meta: {
@@ -265,7 +265,7 @@ const en: Dictionary = {
 
 const ar: Dictionary = {
   nav: { home: "الرئيسية", about: "من نحن", services: "الخدمات", projects: "المشاريع", news: "الأخبار", contact: "اتصل بنا" },
-  actions: { contact: "اتصل بنا", allServices: "كل الخدمات", allProjects: "كل المشاريع", allNews: "كل الأخبار", discover: "اكتشف المشروع", quote: "اطلب عرض سعر", brochure: "تحميل الكتيب", send: "إرسال الطلب" },
+  actions: { contact: "اتصل بنا", allServices: "كل الخدمات", allProjects: "كل المشاريع", allNews: "كل الأخبار", discover: "اكتشف المشروع", quote: "اطلب عرض سعر", brochure: "تحميل الكتيب", send: "إرسال الطلب", readMore: "اقرأ المزيد", viewLink: "عرض الرابط", backNews: "العودة إلى الأخبار", backProjects: "العودة إلى المشاريع" },
   hero: {
     eyebrow: "منذ 1966 — جورا، فرنسا",
     title: "هندسة الخشب ودقّة التفاصيل لفضاءات استثنائية.",
@@ -366,7 +366,7 @@ const ar: Dictionary = {
     officesTitle: "مواقعنا",
     offices: [
       { city: "المقر والورشة", lines: ["ZA Les Casernes", "39600 أربوا، فرنسا", "+33 (0)3 84 47 18 23"] },
-      { city: "مكتب باريس", lines: ["12 شارع لا بيه", "75002 باريس، فرنسا", "contact@batimob.net"] },
+      { city: "مكتب باريس", lines: ["12 شارع لا بيه", "75002 باريس، فرنسا", "l.beyer@batimob.net"] },
     ],
   },
   meta: {

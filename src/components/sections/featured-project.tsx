@@ -55,17 +55,25 @@ export function FeaturedProject({ project }: FeaturedProjectProps) {
             </div>
           </Reveal>
           <Reveal delay={160}>
-            <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground">
+            <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground line-clamp-3">
               {getLocalizedText(project, locale)}
             </p>
           </Reveal>
           <Reveal delay={200} className="mt-10">
-            <ArrowLink href="/projects">{t.actions.discover}</ArrowLink>
+            <ArrowLink
+              href={`/projects/${encodeURIComponent(project.slug?.current ?? "")}`}
+            >
+              {t.actions.discover}
+            </ArrowLink>
           </Reveal>
         </div>
 
         <Reveal delay={120}>
-          <Link href="/projects" className="group block" aria-label={getLocalizedName(project, locale)}>
+          <Link
+            href={`/projects/${encodeURIComponent(project.slug?.current ?? "")}`}
+            className="group block"
+            aria-label={getLocalizedName(project, locale)}
+          >
             <div className="relative aspect-[3/4] overflow-hidden rounded-2xl shadow-card transition-shadow duration-300 ease-[var(--ease-expo)] group-hover:shadow-lift">
               <ImageCarousel
                 images={projectImages(project).map((image) =>

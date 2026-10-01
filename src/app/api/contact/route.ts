@@ -3,7 +3,7 @@ import { sanityWriteClient } from "@/lib/sanity";
 import { Resend } from "resend";
 
 const resend = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KEY) : null;
-const CONTACT_EMAIL = process.env.CONTACT_EMAIL ?? "contact@batimob.net";
+const CONTACT_EMAIL = process.env.CONTACT_EMAIL ?? "l.beyer@batimob.net";
 
 function escapeHtml(str: string): string {
   return str
@@ -42,7 +42,7 @@ export async function POST(request: Request) {
     // 2. Send email notification
     if (resend) {
       const subject = [name, company].filter(Boolean).join(" — ") || "Nouvelle demande Batimob";
-      await resend.emails.send({
+      const mail = await resend.emails.send({
         from: "Batimob Contact <onboarding@resend.dev>",
         to: CONTACT_EMAIL,
         subject: `📩 ${subject}`,
@@ -63,6 +63,9 @@ export async function POST(request: Request) {
           </div>
         `,
       });
+      if (mail.error) {
+        console.error("Contact notification email failed:", mail.error);
+      }
     }
 
     return NextResponse.json({ success: true, id: result._id });

@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
 import { useI18n } from "@/components/providers";
@@ -104,9 +105,10 @@ export function ProjectsContent({ projects, featured }: ProjectsContentProps) {
         <div className="mt-14">
           {showFeatured && lead && (
             <Reveal>
-              <article
-                id={lead.slug.current}
-                className="grid items-center gap-10 rounded-2xl border border-border bg-card p-6 shadow-card sm:p-10 lg:grid-cols-2 lg:gap-14"
+              <Link
+                id={lead.slug?.current}
+                href={`/projects/${encodeURIComponent(lead.slug?.current ?? "")}`}
+                className="group grid items-center gap-10 rounded-2xl border border-border bg-card p-6 shadow-card transition-shadow duration-300 ease-[var(--ease-expo)] hover:shadow-lift sm:p-10 lg:grid-cols-2 lg:gap-14"
               >
                 <div className="relative aspect-[16/10] overflow-hidden rounded-2xl sm:aspect-[4/3]">
                   <ImageCarousel
@@ -129,19 +131,27 @@ export function ProjectsContent({ projects, featured }: ProjectsContentProps) {
                   <h2 className="mt-5 font-display text-3xl leading-tight text-balance sm:text-4xl">
                     {getLocalizedName(lead, locale)}
                   </h2>
-                  <p className="mt-5 text-lg leading-relaxed text-muted-foreground">
+                  <p className="mt-5 text-lg leading-relaxed text-muted-foreground line-clamp-3">
                     {getLocalizedText(lead, locale)}
                   </p>
+                  <span className="mt-5 inline-flex items-center gap-2 text-sm font-medium text-foreground">
+                    {t.actions.readMore}
+                    <ArrowRight
+                      className="size-4 transition-transform duration-300 ease-[var(--ease-expo)] group-hover:translate-x-1 rtl:group-hover:-translate-x-1 rtl:rotate-180"
+                      aria-hidden="true"
+                    />
+                  </span>
                 </div>
-              </article>
+              </Link>
             </Reveal>
           )}
 
           <div className="mt-8 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
             {visibleItems.map((item, index) => (
               <Reveal key={item._id} delay={(index % 3) * 80}>
-                <article
-                  id={item.slug.current}
+                <Link
+                  id={item.slug?.current}
+                  href={`/projects/${encodeURIComponent(item.slug?.current ?? "")}`}
                   className="group flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-card transition-shadow duration-300 ease-[var(--ease-expo)] hover:shadow-lift"
                 >
                   <div className="relative aspect-[4/3] overflow-hidden">
@@ -166,7 +176,7 @@ export function ProjectsContent({ projects, featured }: ProjectsContentProps) {
                     <h3 className="mt-4 text-lg font-medium leading-snug">
                       {getLocalizedName(item, locale)}
                     </h3>
-                    <p className="mt-3 flex-1 leading-relaxed text-muted-foreground">
+                    <p className="mt-3 flex-1 leading-relaxed text-muted-foreground line-clamp-3">
                       {getLocalizedText(item, locale)}
                     </p>
                     <span className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-foreground">
@@ -177,7 +187,7 @@ export function ProjectsContent({ projects, featured }: ProjectsContentProps) {
                       />
                     </span>
                   </div>
-                </article>
+                </Link>
               </Reveal>
             ))}
           </div>

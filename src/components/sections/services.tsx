@@ -54,9 +54,16 @@ export function Services({ services }: ServicesProps) {
                   <h3 className="mt-6 text-lg font-medium transition-colors duration-300 group-hover:text-timber-deep">
                     {serviceTitle(item, locale)}
                   </h3>
-                  <p className="mt-3 leading-relaxed text-muted-foreground">
+                  <p className="mt-3 flex-1 leading-relaxed text-muted-foreground line-clamp-3">
                     {serviceText(item, locale)}
                   </p>
+                  <span className="mt-5 inline-flex items-center gap-2 text-sm font-medium text-foreground">
+                    {t.actions.readMore}
+                    <ArrowRight
+                      className="size-4 transition-transform duration-300 ease-[var(--ease-expo)] group-hover:translate-x-1 rtl:group-hover:-translate-x-1 rtl:rotate-180"
+                      aria-hidden="true"
+                    />
+                  </span>
                 </Link>
               </Reveal>
             );

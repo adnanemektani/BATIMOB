@@ -62,9 +62,16 @@ export function ServicesContent({ services }: ServicesContentProps) {
                         aria-hidden="true"
                       />
                     </div>
-                    <p className="mt-5 max-w-2xl text-lg leading-relaxed text-muted-foreground">
+                    <p className="mt-5 max-w-2xl text-lg leading-relaxed text-muted-foreground line-clamp-3">
                       {serviceText(item, locale)}
                     </p>
+                    <span className="mt-4 inline-flex items-center gap-2 text-sm font-medium text-foreground">
+                      {t.actions.readMore}
+                      <ArrowRight
+                        className="size-4 transition-transform duration-300 ease-[var(--ease-expo)] group-hover:translate-x-1 rtl:group-hover:-translate-x-1 rtl:rotate-180"
+                        aria-hidden="true"
+                      />
+                    </span>
                   </div>
                 </Link>
               </Reveal>

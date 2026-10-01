@@ -1,10 +1,13 @@
 "use client";
 
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
+
 import { useI18n } from "@/components/providers";
 import { Reveal } from "@/components/reveal";
 import { SectionHeading } from "@/components/section-heading";
 import { ArrowLink } from "@/components/cta";
-import type { SanityNews } from "@/lib/sanity";
+import { newsKey, type SanityNews } from "@/lib/sanity";
 import type { Locale } from "@/lib/translations";
 
 function getLocalizedTitle(news: SanityNews, locale: Locale): string {
@@ -43,7 +46,10 @@ export function LatestNews({ news }: LatestNewsProps) {
         <div className="mt-14 grid gap-6 md:grid-cols-3">
           {news.slice(0, 3).map((item, index) => (
             <Reveal key={item._id} delay={(index % 3) * 80}>
-              <article className="flex h-full flex-col rounded-2xl border border-border bg-card p-8 shadow-card transition-shadow duration-300 ease-[var(--ease-expo)] hover:shadow-lift">
+              <Link
+                href={`/news/${encodeURIComponent(newsKey(item))}`}
+                className="group flex h-full flex-col rounded-2xl border border-border bg-card p-8 shadow-card transition-shadow duration-300 ease-[var(--ease-expo)] hover:shadow-lift"
+              >
                 <div className="flex items-center gap-3">
                   <span className="hairline text-muted-foreground">
                     {item.date}
@@ -52,13 +58,20 @@ export function LatestNews({ news }: LatestNewsProps) {
                     {item.category}
                   </span>
                 </div>
-                <h3 className="mt-5 text-lg font-medium leading-snug">
+                <h3 className="mt-5 text-lg font-medium leading-snug transition-colors duration-300 group-hover:text-timber-deep">
                   {getLocalizedTitle(item, locale)}
                 </h3>
-                <p className="mt-3 flex-1 leading-relaxed text-muted-foreground">
+                <p className="mt-3 flex-1 leading-relaxed text-muted-foreground line-clamp-3">
                   {getLocalizedText(item, locale)}
                 </p>
-              </article>
+                <span className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-foreground">
+                  {t.actions.readMore}
+                  <ArrowRight
+                    className="size-4 transition-transform duration-300 ease-[var(--ease-expo)] group-hover:translate-x-1 rtl:group-hover:-translate-x-1 rtl:rotate-180"
+                    aria-hidden="true"
+                  />
+                </span>
+              </Link>
             </Reveal>
           ))}
         </div>
