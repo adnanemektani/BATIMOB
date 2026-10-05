@@ -25,7 +25,9 @@ export type Dictionary = {
   testimonials: { title: string; items: Testimonial[] };
   news: { title: string; lead: string; items: News[] };
   ctaBand: { title: string; text: string };
-  footer: { about: string; company: string; legal: string; links: string[]; legalLinks: string[]; address: string; rights: string };
+  footer: { about: string; company: string; legal: string; links: string[]; legalLinks: string[]; manageCookies: string; address: string; rights: string };
+  cookies: { title: string; text: string; necessary: string; necessaryText: string; audience: string; audienceText: string; accept: string; reject: string; customize: string; save: string; back: string };
+  legal: { eyebrow: string; toc: string; notice: string };
   about: { title: string; lead: string; historyTitle: string; history: string; valuesTitle: string; values: Item[]; atelierAlt: string };
   contact: { title: string; lead: string; form: { name: string; email: string; company: string; message: string; note: string }; officesTitle: string; offices: { city: string; lines: string[] }[] };
   meta: Record<"home" | "about" | "services" | "projects" | "news" | "contact", { title: string; description: string }>;
@@ -110,9 +112,29 @@ const fr: Dictionary = {
     company: "Société",
     legal: "Légal",
     links: ["À propos", "Services", "Projets", "Actualités"],
-    legalLinks: ["Mentions légales", "Confidentialité"],
+    legalLinks: ["Mentions légales", "Politique de confidentialité", "Politique des cookies", "Conditions d'utilisation", "Conditions de rendez-vous et de devis"],
+    manageCookies: "Gérer mes cookies",
     address: "ZA Les Casernes, 39600 Arbois, France\nBureau Paris : 12 rue de la Paix, 75002 Paris",
     rights: `© ${new Date().getFullYear()} Batimob`,
+  },
+  cookies: {
+    title: "Votre vie privée compte pour nous",
+    text: "Nous utilisons des cookies pour faire fonctionner le site et, uniquement avec votre accord, mesurer sa fréquentation. Aucun traceur n'est déposé avant votre choix.",
+    necessary: "Strictement nécessaires",
+    necessaryText: "Langue choisie, mémorisation de votre choix de consentement, sécurité des formulaires. Ceux-ci sont toujours actifs.",
+    audience: "Mesure d'audience",
+    audienceText: "Statistiques de fréquentation du site avec Google Analytics.",
+    accept: "Tout accepter",
+    reject: "Tout refuser",
+    customize: "Personnaliser",
+    save: "Enregistrer mes choix",
+    back: "Retour",
+  },
+  legal: {
+    eyebrow: "Informations légales",
+    toc: "Sommaire",
+    notice:
+      "La version française de ces textes fait foi ; les versions anglaise et arabe sont fournies pour information.",
   },
   about: {
     title: "Un savoir-faire né dans le Jura",
@@ -226,9 +248,29 @@ const en: Dictionary = {
     company: "Company",
     legal: "Legal",
     links: ["About", "Services", "Projects", "News"],
-    legalLinks: ["Legal notice", "Privacy"],
+    legalLinks: ["Legal notice", "Privacy policy", "Cookies", "Terms of use", "Appointment & quote terms"],
+    manageCookies: "Manage my cookies",
     address: "ZA Les Casernes, 39600 Arbois, France\nParis office: 12 rue de la Paix, 75002 Paris",
     rights: `© ${new Date().getFullYear()} Batimob`,
+  },
+  cookies: {
+    title: "Your privacy matters to us",
+    text: "We use cookies to run the site and, only with your consent, to measure how it is used. No tracker is set before you make a choice.",
+    necessary: "Strictly necessary",
+    necessaryText: "Chosen language, remembering your consent choice, form security. These are always active.",
+    audience: "Audience measurement",
+    audienceText: "Site traffic statistics with Google Analytics.",
+    accept: "Accept all",
+    reject: "Reject all",
+    customize: "Customise",
+    save: "Save my choices",
+    back: "Back",
+  },
+  legal: {
+    eyebrow: "Legal information",
+    toc: "Contents",
+    notice:
+      "The French version of these texts prevails; the English and Arabic versions are provided for information only.",
   },
   about: {
     title: "A craft born in the Jura",
@@ -342,9 +384,29 @@ const ar: Dictionary = {
     company: "الشركة",
     legal: "قانوني",
     links: ["من نحن", "الخدمات", "المشاريع", "الأخبار"],
-    legalLinks: ["إشعار قانوني", "الخصوصية"],
+    legalLinks: ["إشعار قانوني", "سياسة الخصوصية", "ملفات تعريف الارتباط", "شروط الاستخدام", "شروط العروض والمواعيد"],
+    manageCookies: "إدارة ملفات تعريف الارتباط",
     address: "ZA Les Casernes، 39600 أربوا، فرنسا\nمكتب باريس: 12 شارع لا بيه، 75002 باريس",
     rights: `© ${new Date().getFullYear()} Batimob`,
+  },
+  cookies: {
+    title: "خصوصيتك تهمّنا",
+    text: "نستخدم ملفات تعريف الارتباط لتشغيل الموقع، وبالموافقة فحسب لقياس نسبة زيارةه. لا يُسجَّل أي متتبِّع قبل اختيارك.",
+    necessary: "ضرورية للغاية",
+    necessaryText: "اللغة المختارة، حفظ اختيارك للموافقة، أمان النماذج. تبقى مفعّلة دائمًا.",
+    audience: "قياس الجمهور",
+    audienceText: "إحصاءات زيارة الموقع عبر Google Analytics.",
+    accept: "قبول الكل",
+    reject: "رفض الكل",
+    customize: "تخصيص",
+    save: "حفظ اختياراتي",
+    back: "رجوع",
+  },
+  legal: {
+    eyebrow: "معلومات قانونية",
+    toc: "المحتويات",
+    notice:
+      "تُعتمد النسخة الفرنسية من هذه النصوص وحدها، أما النسختان الإنجليزية والعربية فتُقدَّم للاستعلام فقط.",
   },
   about: {
     title: "حرفة وُلدت في جورا",

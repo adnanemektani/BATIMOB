@@ -1,10 +1,12 @@
 import type { Metadata, Viewport } from "next";
-import Script from "next/script";
 
+import "./fonts.css";
 import "./globals.css";
 import { I18nProvider } from "@/components/providers";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
+import { Analytics } from "@/components/analytics";
+import { CookieConsent } from "@/components/cookie-consent";
 import { SITE_URL } from "@/lib/seo";
 
 const OG_IMAGE = "/images/hero-auditorium.jpg";
@@ -49,27 +51,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="fr" dir="ltr">
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link
-          rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossOrigin="anonymous"
-        />
-        {/* eslint-disable-next-line @next/next/no-page-custom-font */}
-        <link
-          href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Instrument+Sans:wght@400;500;600&family=Noto+Kufi+Arabic:wght@400;500;600&display=swap"
-          rel="stylesheet"
-        />
-      </head>
       <body className="min-h-screen bg-background text-foreground antialiased">
-        <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-FBFRHN6M20"
-          strategy="afterInteractive"
-        />
-        <Script id="gtag-init" strategy="afterInteractive">
-          {`window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-FBFRHN6M20');`}
-        </Script>
+        <Analytics />
         <I18nProvider>
           <a
             href="#main"
@@ -80,6 +63,7 @@ export default function RootLayout({
           <Header />
           <main id="main">{children}</main>
           <Footer />
+          <CookieConsent />
         </I18nProvider>
       </body>
     </html>

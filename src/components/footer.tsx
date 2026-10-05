@@ -6,6 +6,7 @@ import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 
 import { useI18n } from "@/components/providers";
+import { CONSENT_OPEN_EVENT } from "@/lib/consent";
 import { LINKEDIN_URL } from "@/lib/links";
 
 const COMPANY_LINKS = [
@@ -16,8 +17,11 @@ const COMPANY_LINKS = [
 ] as const;
 
 const LEGAL_LINKS = [
-  { href: "/", index: 0 },
-  { href: "/", index: 1 },
+  { href: "/mentions-legales", index: 0 },
+  { href: "/confidentialite", index: 1 },
+  { href: "/cookies", index: 2 },
+  { href: "/conditions-utilisation", index: 3 },
+  { href: "/conditions-devis", index: 4 },
 ] as const;
 
 export function Footer() {
@@ -115,11 +119,24 @@ export function Footer() {
             {t.footer.rights.replace(/\d{4}/, String(new Date().getFullYear()))}
           </p>
           <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
-            {LEGAL_LINKS.map(({ index }) => (
-              <span key={index} className="text-xs text-canvas/50">
+            {LEGAL_LINKS.map(({ href, index }) => (
+              <Link
+                key={href}
+                href={href}
+                className="text-xs text-canvas/50 transition-colors hover:text-canvas"
+              >
                 {t.footer.legalLinks[index]}
-              </span>
+              </Link>
             ))}
+            <button
+              type="button"
+              onClick={() =>
+                window.dispatchEvent(new Event(CONSENT_OPEN_EVENT))
+              }
+              className="text-xs text-canvas/50 transition-colors hover:text-canvas"
+            >
+              {t.footer.manageCookies}
+            </button>
             <a
               href={LINKEDIN_URL}
               target="_blank"
