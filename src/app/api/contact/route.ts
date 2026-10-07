@@ -3,7 +3,12 @@ import { sanityWriteClient } from "@/lib/sanity";
 import { Resend } from "resend";
 
 const resend = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KEY) : null;
-const CONTACT_EMAIL = process.env.CONTACT_EMAIL ?? "l.beyer@batimob.net";
+// Adresse qui RÉCOIT les demandes (à surcharger via CONTACT_EMAIL si besoin).
+const CONTACT_EMAIL = process.env.CONTACT_EMAIL ?? "contact@batimob.net";
+// Adresse d'ENVOI. Le domaine batimob.net est vérifié sur Resend,
+// donc n'importe quelle adresse @batimob.net est acceptée.
+const CONTACT_FROM =
+  process.env.CONTACT_FROM ?? "Batimob Contact <contact@batimob.net>";
 
 function escapeHtml(str: string): string {
   return str
@@ -43,7 +48,8 @@ export async function POST(request: Request) {
     if (resend) {
       const subject = [name, company].filter(Boolean).join(" — ") || "Nouvelle demande Batimob";
       const mail = await resend.emails.send({
-        from: "Batimob Contact <onboarding@resend.dev>",
+        from: CONTACT_FROM,
+        replyTo: email,
         to: CONTACT_EMAIL,
         subject: `📩 ${subject}`,
         html: `
@@ -66,6 +72,10 @@ export async function POST(request: Request) {
       if (mail.error) {
         console.error("Contact notification email failed:", mail.error);
       }
+    } else {
+      console.warn(
+        "RESEND_API_KEY manquante : la demande est enregistree dans Sanity, mais l'email de notification n'a pas ete envoye."
+      );
     }
 
     return NextResponse.json({ success: true, id: result._id });

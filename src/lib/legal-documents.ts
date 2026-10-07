@@ -53,7 +53,7 @@ export const LEGAL_DOCUMENTS: LegalDocument[] = [
               "Inscrite au répertoire des métiers de [chambre de métiers] sous le numéro [numéro RM] (le cas échéant)",
               "Code APE/NAF : 4332A (travaux de menuiserie bois et PVC)",
               "Numéro de TVA intracommunautaire : FR30 802 455 592",
-              "Téléphone : +33 (0)3 84 47 18 23 · E-mail : l.beyer@batimob.net",
+              "Téléphone : +33 (0)3 84 47 18 23 · E-mail : contact@batimob.net",
             ],
           },
         ],
@@ -128,7 +128,7 @@ export const LEGAL_DOCUMENTS: LegalDocument[] = [
         blocks: [
           {
             kind: "p",
-            text: "Le traitement des données personnelles et l'usage des cookies sont décrits dans notre {{politique de confidentialité|/confidentialite}} et notre {{politique de cookies|/cookies}}. Contact : l.beyer@batimob.net.",
+            text: "Le traitement des données personnelles et l'usage des cookies sont décrits dans notre {{politique de confidentialité|/confidentialite}} et notre {{politique de cookies|/cookies}}. Contact : contact@batimob.net.",
           },
         ],
       },
@@ -157,7 +157,7 @@ export const LEGAL_DOCUMENTS: LegalDocument[] = [
         blocks: [
           {
             kind: "p",
-            text: "BATIMOB, SARL, ZAC des Toupes, 39570 Montmorot, SIREN 802 455 592, est responsable du traitement de vos données. Contact pour toute question relative aux données personnelles : l.beyer@batimob.net. Aucun délégué à la protection des données (DPO) n'est désigné [à adapter si un DPO existe].",
+            text: "BATIMOB, SARL, ZAC des Toupes, 39570 Montmorot, SIREN 802 455 592, est responsable du traitement de vos données. Contact pour toute question relative aux données personnelles : contact@batimob.net. Aucun délégué à la protection des données (DPO) n'est désigné [à adapter si un DPO existe].",
           },
         ],
       },
@@ -244,7 +244,7 @@ export const LEGAL_DOCUMENTS: LegalDocument[] = [
         blocks: [
           {
             kind: "p",
-            text: "Vous disposez des droits d'accès, de rectification, d'effacement, de limitation, d'opposition, de portabilité et de retrait du consentement à tout moment, ainsi que du droit de définir des directives sur le sort de vos données après votre décès. Pour les exercer, écrivez à l.beyer@batimob.net ; nous répondons sous un mois et pouvons demander un justificatif d'identité en cas de doute. Vous pouvez vous opposer à tout moment à la prospection commerciale. Si vous estimez que vos droits ne sont pas respectés, vous pouvez saisir la CNIL (3 place de Fontenoy, TSA 80715, 75334 Paris Cedex 07, www.cnil.fr).",
+            text: "Vous disposez des droits d'accès, de rectification, d'effacement, de limitation, d'opposition, de portabilité et de retrait du consentement à tout moment, ainsi que du droit de définir des directives sur le sort de vos données après votre décès. Pour les exercer, écrivez à contact@batimob.net ; nous répondons sous un mois et pouvons demander un justificatif d'identité en cas de doute. Vous pouvez vous opposer à tout moment à la prospection commerciale. Si vous estimez que vos droits ne sont pas respectés, vous pouvez saisir la CNIL (3 place de Fontenoy, TSA 80715, 75334 Paris Cedex 07, www.cnil.fr).",
           },
         ],
       },
@@ -421,7 +421,7 @@ export const LEGAL_DOCUMENTS: LegalDocument[] = [
         blocks: [
           {
             kind: "p",
-            text: "Pour signaler un contenu manifestement illicite, écrivez à l.beyer@batimob.net en précisant l'adresse de la page et le motif.",
+            text: "Pour signaler un contenu manifestement illicite, écrivez à contact@batimob.net en précisant l'adresse de la page et le motif.",
           },
         ],
       },
@@ -450,7 +450,7 @@ export const LEGAL_DOCUMENTS: LegalDocument[] = [
         blocks: [
           {
             kind: "p",
-            text: "Vous demandez un rendez-vous (visite sur site, prise de mesures ou échange) en remplissant le {{formulaire de contact|/contact}} ; nous confirmons le créneau par e-mail. Le rendez-vous est gratuit. Vous pouvez déplacer ou annuler gratuitement jusqu'à 24 heures avant, par le lien de l'e-mail ou à l.beyer@batimob.net. En cas d'absence répétée sans prévenir, BATIMOB peut refuser de nouveaux créneaux.",
+            text: "Vous demandez un rendez-vous (visite sur site, prise de mesures ou échange) en remplissant le {{formulaire de contact|/contact}} ; nous confirmons le créneau par e-mail. Le rendez-vous est gratuit. Vous pouvez déplacer ou annuler gratuitement jusqu'à 24 heures avant, par le lien de l'e-mail ou à contact@batimob.net. En cas d'absence répétée sans prévenir, BATIMOB peut refuser de nouveaux créneaux.",
           },
         ],
       },
@@ -468,7 +468,7 @@ export const LEGAL_DOCUMENTS: LegalDocument[] = [
         blocks: [
           {
             kind: "p",
-            text: "Si vous êtes un consommateur et que le contrat est conclu à distance (signature électronique, échange par e-mail) ou hors établissement (signature chez vous après une visite), vous disposez de 14 jours pour vous rétracter sans motif ni pénalité, à compter de la signature (art. L.221-18 du Code de la consommation). Pour l'exercer, envoyez toute déclaration non équivoque à l.beyer@batimob.net ou à l'adresse postale indiquée dans les mentions légales.",
+            text: "Si vous êtes un consommateur et que le contrat est conclu à distance (signature électronique, échange par e-mail) ou hors établissement (signature chez vous après une visite), vous disposez de 14 jours pour vous rétracter sans motif ni pénalité, à compter de la signature (art. L.221-18 du Code de la consommation). Pour l'exercer, envoyez toute déclaration non équivoque à contact@batimob.net ou à l'adresse postale indiquée dans les mentions légales.",
           },
           {
             kind: "ul",
@@ -516,7 +516,7 @@ export const LEGAL_DOCUMENTS: LegalDocument[] = [
         blocks: [
           {
             kind: "p",
-            text: "En cas de difficulté, écrivez d'abord à l.beyer@batimob.net. À défaut de réponse satisfaisante sous 30 jours, les consommateurs peuvent saisir gratuitement le médiateur de la consommation : [nom, adresse, site internet]. La saisine d'un médiateur n'empêche pas d'agir en justice.",
+            text: "En cas de difficulté, écrivez d'abord à contact@batimob.net. À défaut de réponse satisfaisante sous 30 jours, les consommateurs peuvent saisir gratuitement le médiateur de la consommation : [nom, adresse, site internet]. La saisine d'un médiateur n'empêche pas d'agir en justice.",
           },
         ],
       },

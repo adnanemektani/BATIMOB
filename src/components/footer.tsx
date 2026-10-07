@@ -31,7 +31,7 @@ export function Footer() {
   const phone =
     t.contact.offices[0]?.lines[2] ?? t.footer.address.split("\n")[0];
   const email =
-    t.contact.offices[1]?.lines[2] ?? "l.beyer@batimob.net";
+    t.contact.offices[1]?.lines[2] ?? "contact@batimob.net";
   const addressLines = t.footer.address.split("\n");
 
   return (

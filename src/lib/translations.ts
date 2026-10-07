@@ -156,7 +156,7 @@ const fr: Dictionary = {
     officesTitle: "Nos implantations",
     offices: [
       { city: "Siège & atelier", lines: ["ZA Les Casernes", "39600 Arbois, France", "+33 (0)3 84 47 18 23"] },
-      { city: "Bureau Paris", lines: ["12 rue de la Paix", "75002 Paris, France", "l.beyer@batimob.net"] },
+      { city: "Bureau Paris", lines: ["12 rue de la Paix", "75002 Paris, France", "contact@batimob.net"] },
     ],
   },
   meta: {
@@ -292,7 +292,7 @@ const en: Dictionary = {
     officesTitle: "Our locations",
     offices: [
       { city: "Head office & workshop", lines: ["ZA Les Casernes", "39600 Arbois, France", "+33 (0)3 84 47 18 23"] },
-      { city: "Paris office", lines: ["12 rue de la Paix", "75002 Paris, France", "l.beyer@batimob.net"] },
+      { city: "Paris office", lines: ["12 rue de la Paix", "75002 Paris, France", "contact@batimob.net"] },
     ],
   },
   meta: {
@@ -428,7 +428,7 @@ const ar: Dictionary = {
     officesTitle: "مواقعنا",
     offices: [
       { city: "المقر والورشة", lines: ["ZA Les Casernes", "39600 أربوا، فرنسا", "+33 (0)3 84 47 18 23"] },
-      { city: "مكتب باريس", lines: ["12 شارع لا بيه", "75002 باريس، فرنسا", "l.beyer@batimob.net"] },
+      { city: "مكتب باريس", lines: ["12 شارع لا بيه", "75002 باريس، فرنسا", "contact@batimob.net"] },
     ],
   },
   meta: {
