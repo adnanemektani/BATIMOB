@@ -3,9 +3,14 @@
  * remis par E-MPGT (Emmanuel Lebastard).
  *
  * Version française de référence : le texte est publié tel quel. Les champs
- * [entre crochets] correspondent aux informations que seul BATIMOB peut fournir
- * (hébergeur, assurances, médiateur, répertoire des métiers) et doivent être
- * complétés avant la mise en ligne définitive — voir document 00.
+ * [entre crochets] de l'hébergeur restent à compléter avec les informations
+ * d'Arnaud avant la mise en ligne (section « Hébergeur » et liste des
+ * sous-traitants). Les autres mentions à compléter (assurances RC pro et
+ * décennale, répertoire des métiers, médiateur, qualifications, TVA réduit)
+ * ont été retirées le 8 octobre 2026 sur la demande d'Emmanuel Lebastard,
+ * de même que les 3 encadrés « à faire valider par votre conseil ».
+ * Les [blanks] du modèle de formulaire de rétractation sont volontaires :
+ * ce sont les champs que remplit le consommateur.
  */
 
 export type LegalBlock =
@@ -50,7 +55,6 @@ export const LEGAL_DOCUMENTS: LegalDocument[] = [
             kind: "ul",
             items: [
               "Immatriculée au RCS de Lons-le-Saunier sous le numéro 802 455 592 ; SIRET du siège : 802 455 592 00013",
-              "Inscrite au répertoire des métiers de [chambre de métiers] sous le numéro [numéro RM] (le cas échéant)",
               "Code APE/NAF : 4332A (travaux de menuiserie bois et PVC)",
               "Numéro de TVA intracommunautaire : FR30 802 455 592",
               "Téléphone : +33 (0)3 84 47 18 23 · E-mail : contact@batimob.net",
@@ -86,36 +90,16 @@ export const LEGAL_DOCUMENTS: LegalDocument[] = [
         ],
       },
       {
-        title: "5. Activité réglementée, assurances et garanties",
+        title: "5. Activité réglementée",
         blocks: [
           {
             kind: "p",
-            text: "BATIMOB exerce une activité de menuiserie bois (fabrication, fourniture et pose). Elle est couverte par :",
-          },
-          {
-            kind: "ul",
-            items: [
-              "une assurance responsabilité civile professionnelle souscrite auprès de [assureur, adresse], contrat n° [numéro], couverture géographique : [France / Europe] ;",
-              "une assurance responsabilité décennale souscrite auprès de [assureur, adresse], contrat n° [numéro], couverture géographique : [France / Europe].",
-            ],
-          },
-          {
-            kind: "p",
-            text: "Titre professionnel et qualifications : [par exemple artisan, qualification ou label éventuel].",
+            text: "BATIMOB exerce une activité de menuiserie bois (fabrication, fourniture et pose).",
           },
         ],
       },
       {
-        title: "6. Médiation de la consommation",
-        blocks: [
-          {
-            kind: "p",
-            text: "Conformément aux articles L.611-1 et suivants du Code de la consommation, tout consommateur a le droit de recourir gratuitement à un médiateur de la consommation en vue de la résolution amiable d'un litige qui l'oppose à BATIMOB, après une réclamation écrite restée sans réponse satisfaisante. Médiateur retenu : [nom du médiateur, adresse postale, site internet]. Les détails figurent dans nos {{conditions de rendez-vous et de devis|/conditions-devis}}.",
-          },
-        ],
-      },
-      {
-        title: "7. Propriété intellectuelle",
+        title: "6. Propriété intellectuelle",
         blocks: [
           {
             kind: "p",
@@ -124,7 +108,7 @@ export const LEGAL_DOCUMENTS: LegalDocument[] = [
         ],
       },
       {
-        title: "8. Données personnelles et cookies",
+        title: "7. Données personnelles et cookies",
         blocks: [
           {
             kind: "p",
@@ -133,7 +117,7 @@ export const LEGAL_DOCUMENTS: LegalDocument[] = [
         ],
       },
       {
-        title: "9. Langues et droit applicable",
+        title: "8. Langues et droit applicable",
         blocks: [
           {
             kind: "p",
@@ -157,7 +141,7 @@ export const LEGAL_DOCUMENTS: LegalDocument[] = [
         blocks: [
           {
             kind: "p",
-            text: "BATIMOB, SARL, ZAC des Toupes, 39570 Montmorot, SIREN 802 455 592, est responsable du traitement de vos données. Contact pour toute question relative aux données personnelles : contact@batimob.net. Aucun délégué à la protection des données (DPO) n'est désigné [à adapter si un DPO existe].",
+            text: "BATIMOB, SARL, ZAC des Toupes, 39570 Montmorot, SIREN 802 455 592, est responsable du traitement de vos données. Contact pour toute question relative aux données personnelles : contact@batimob.net. Aucun délégué à la protection des données (DPO) n'est désigné.",
           },
         ],
       },
@@ -459,7 +443,7 @@ export const LEGAL_DOCUMENTS: LegalDocument[] = [
         blocks: [
           {
             kind: "p",
-            text: "Le devis est gratuit, sauf indication contraire annoncée avant son établissement. Il précise notamment : l'identité de BATIMOB, la description des travaux et fournitures, les prix unitaires et le total hors taxes et toutes taxes comprises, le taux de TVA, les délais, les modalités de paiement, les assurances (décennale et RC pro, avec coordonnées de l'assureur), la durée de validité de l'offre [par exemple 30 jours] et les modalités de médiation. Le contrat est conclu lorsque vous renvoyez le devis daté, signé et accompagné de la mention « Bon pour accord », en version papier ou par signature électronique.",
+            text: "Le devis est gratuit, sauf indication contraire annoncée avant son établissement. Il précise notamment : l'identité de BATIMOB, la description des travaux et fournitures, les prix unitaires et le total hors taxes et toutes taxes comprises, le taux de TVA, les délais et les modalités de paiement. Le contrat est conclu lorsque vous renvoyez le devis daté, signé et accompagné de la mention « Bon pour accord », en version papier ou par signature électronique.",
           },
         ],
       },
@@ -475,12 +459,12 @@ export const LEGAL_DOCUMENTS: LegalDocument[] = [
             items: [
               "Aucun travail ne commence avant la fin du délai de 14 jours, sauf si vous demandez expressément un démarrage anticipé par écrit, sur un support durable. Si vous vous rétractez après ce démarrage, vous payez la part de prestation déjà réalisée (art. L.221-25).",
               "Pour les contrats conclus hors établissement, BATIMOB ne perçoit aucun paiement ni acompte dans les 7 jours suivant la signature (art. L.221-10).",
-              "Le droit de rétractation ne s'applique pas aux biens fabriqués selon vos spécifications ou nettement personnalisés, tels que des menuiseries sur mesure (art. L.221-28, 3°). [Point à faire valider par votre conseil : l'exclusion est discutée pour les contrats mixtes fourniture et pose. Dans le doute, informez le client de son droit.]",
+              "Le droit de rétractation ne s'applique pas aux biens fabriqués selon vos spécifications ou nettement personnalisés, tels que des menuiseries sur mesure (art. L.221-28, 3°).",
             ],
           },
           {
             kind: "quote",
-            text: "Modèle de formulaire de rétractation : « À l'attention de BATIMOB, [adresse, e-mail]. Je vous notifie par la présente ma rétractation du contrat portant sur [description des travaux], commandé le [date], reçu le [date]. Nom du consommateur : [nom]. Adresse : [adresse]. Date : [date]. Signature (uniquement en cas de formulaire papier) : »",
+            text: "Modèle de formulaire de rétractation : « À l'attention de BATIMOB, ZAC des Toupes, 39570 Montmorot, contact@batimob.net. Je vous notifie par la présente ma rétractation du contrat portant sur [description des travaux], commandé le [date], reçu le [date]. Nom du consommateur : [nom]. Adresse : [adresse]. Date : [date]. Signature (uniquement en cas de formulaire papier) : »",
           },
         ],
       },
@@ -489,7 +473,7 @@ export const LEGAL_DOCUMENTS: LegalDocument[] = [
         blocks: [
           {
             kind: "p",
-            text: "Les prix sont exprimés en euros, TVA comprise pour les particuliers [taux réduit éventuel sur attestation de l'ancienneté du logement] et hors taxes pour les professionnels. L'acompte, le calendrier de paiement et les pénalités de retard (pour les professionnels : taux au moins égal à trois fois le taux d'intérêt légal et indemnité forfaitaire de recouvrement de 40 euros) figurent dans le devis.",
+            text: "Les prix sont exprimés en euros, TVA comprise pour les particuliers et hors taxes pour les professionnels. L'acompte, le calendrier de paiement et les pénalités de retard (pour les professionnels : taux au moins égal à trois fois le taux d'intérêt légal et indemnité forfaitaire de recouvrement de 40 euros) figurent dans le devis.",
           },
         ],
       },
@@ -512,11 +496,11 @@ export const LEGAL_DOCUMENTS: LegalDocument[] = [
         ],
       },
       {
-        title: "7. Réclamations et médiation",
+        title: "7. Réclamations",
         blocks: [
           {
             kind: "p",
-            text: "En cas de difficulté, écrivez d'abord à contact@batimob.net. À défaut de réponse satisfaisante sous 30 jours, les consommateurs peuvent saisir gratuitement le médiateur de la consommation : [nom, adresse, site internet]. La saisine d'un médiateur n'empêche pas d'agir en justice.",
+            text: "En cas de difficulté, écrivez d'abord à contact@batimob.net.",
           },
         ],
       },
@@ -547,7 +531,7 @@ export const LEGAL_DOCUMENTS: LegalDocument[] = [
           },
           {
             kind: "p",
-            text: "Avant de conclure un contrat, BATIMOB vous communique de manière lisible : les caractéristiques essentielles des travaux ou produits, le prix total, les délais, son identité et ses coordonnées, les garanties légales, ses assurances, l'existence ou non d'un droit de rétractation et le médiateur compétent (art. L.111-1 et L.221-5 du Code de la consommation).",
+            text: "Avant de conclure un contrat, BATIMOB vous communique de manière lisible : les caractéristiques essentielles des travaux ou produits, le prix total, les délais, son identité et ses coordonnées, les garanties légales et l'existence ou non d'un droit de rétractation (art. L.111-1 et L.221-5 du Code de la consommation).",
           },
           {
             kind: "h3",
@@ -555,7 +539,7 @@ export const LEGAL_DOCUMENTS: LegalDocument[] = [
           },
           {
             kind: "quote",
-            text: "« Le vendeur est tenu de livrer un bien conforme au contrat et répond des défauts de conformité existant lors de la délivrance. Le consommateur dispose d'un délai de 2 ans à compter de la délivrance du bien pour agir. Il bénéficie de la garantie sans avoir à prouver que le défaut existait au moment de la délivrance. Le consommateur peut aussi invoquer la garantie des vices cachés (articles 1641 et suivants du Code civil). » [Reprendre la mention officielle des articles L.217-3 et suivants, à faire figurer sur le devis ou la facture.]",
+            text: "« Le vendeur est tenu de livrer un bien conforme au contrat et répond des défauts de conformité existant lors de la délivrance. Le consommateur dispose d'un délai de 2 ans à compter de la délivrance du bien pour agir. Il bénéficie de la garantie sans avoir à prouver que le défaut existait au moment de la délivrance. Le consommateur peut aussi invoquer la garantie des vices cachés (articles 1641 et suivants du Code civil). »",
           },
           {
             kind: "h3",
@@ -565,7 +549,7 @@ export const LEGAL_DOCUMENTS: LegalDocument[] = [
             kind: "ul",
             items: [
               "Par e-mail ou SMS, BATIMOB n'envoie de prospection à un particulier qu'avec son consentement préalable ; chaque message comporte un lien de désinscription.",
-              "Par téléphone, BATIMOB ne contacte pas un particulier à des fins commerciales sans son accord préalable. [Règle à vérifier : la loi du 30 juin 2025 a instauré un consentement préalable pour le démarchage téléphonique à partir du 11 août 2026, en remplacement de Bloctel.] Tout démarchage pour la rénovation énergétique par téléphone est interdit.",
+              "Par téléphone, BATIMOB ne contacte pas un particulier à des fins commerciales sans son accord préalable. Tout démarchage pour la rénovation énergétique par téléphone est interdit.",
             ],
           },
           {
