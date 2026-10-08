@@ -2,13 +2,13 @@
  * Textes légaux du site — intégration du document 07 « Textes légaux du site »
  * remis par E-MPGT (Emmanuel Lebastard).
  *
- * Version française de référence : le texte est publié tel quel. Les champs
- * [entre crochets] de l'hébergeur restent à compléter avec les informations
- * d'Arnaud avant la mise en ligne (section « Hébergeur » et liste des
- * sous-traitants). Les autres mentions à compléter (assurances RC pro et
- * décennale, répertoire des métiers, médiateur, qualifications, TVA réduit)
- * ont été retirées le 8 octobre 2026 sur la demande d'Emmanuel Lebastard,
- * de même que les 3 encadrés « à faire valider par votre conseil ».
+ * Version française de référence : le texte est publié tel quel. Tous les
+ * champs ont été complétés ou tranchés : hébergeur renseigné le 8 octobre 2026
+ * avec les informations fournies par Arnaud (OVH SAS / datacentre de
+ * Gravelines). Les autres mentions (assurances RC pro et décennale, répertoire
+ * des métiers, médiateur, qualifications, TVA réduit) ont été retirées le même
+ * jour sur la demande d'Emmanuel Lebastard, de même que les 3 encadrés
+ * « à faire valider par votre conseil ».
  * Les [blanks] du modèle de formulaire de rétractation sont volontaires :
  * ce sont les champs que remplit le consommateur.
  */
@@ -76,7 +76,11 @@ export const LEGAL_DOCUMENTS: LegalDocument[] = [
         blocks: [
           {
             kind: "p",
-            text: "Le site est hébergé par [nom de l'hébergeur choisi par BATIMOB], [forme et capital], [adresse complète], [téléphone ou site internet], dans [pays du centre de données].",
+            text: "Le site est hébergé par OVH SAS, société par actions simplifiée au capital de 50 000 000 €, 2 rue Kellermann, 59100 Roubaix, France. RCS Lille Métropole : 424 761 419 00045. Site internet : www.ovhcloud.com.",
+          },
+          {
+            kind: "p",
+            text: "Les données sont hébergées dans le datacentre OVHcloud de Gravelines (GRA), situé en France (région eu-west-gra).",
           },
         ],
       },
@@ -206,7 +210,7 @@ export const LEGAL_DOCUMENTS: LegalDocument[] = [
         blocks: [
           {
             kind: "p",
-            text: "Les données sont destinées aux équipes habilitées de BATIMOB. Elles peuvent être transmises, dans la limite de leurs missions, à nos sous-traitants : [hébergeur], Sanity.io (gestion des contenus du site : textes et photos), Resend (envoi des e-mails de réponse à vos demandes), ainsi que Google Ireland Limited lorsque vous acceptez le cookie de mesure d'audience. Nous ne vendons jamais vos données. Elles peuvent aussi être communiquées aux autorités sur réquisition légale.",
+            text: "Les données sont destinées aux équipes habilitées de BATIMOB. Elles peuvent être transmises, dans la limite de leurs missions, à nos sous-traitants : OVH SAS (hébergement du site), Sanity.io (gestion des contenus du site : textes et photos), Resend (envoi des e-mails de réponse à vos demandes), ainsi que Google Ireland Limited lorsque vous acceptez le cookie de mesure d'audience. Nous ne vendons jamais vos données. Elles peuvent aussi être communiquées aux autorités sur réquisition légale.",
           },
         ],
       },
