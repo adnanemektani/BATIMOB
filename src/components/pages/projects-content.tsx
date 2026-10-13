@@ -41,7 +41,7 @@ export function ProjectsContent({ projects, featured }: ProjectsContentProps) {
     [projects],
   );
 
-  const lead = projects[0] ?? featured;
+  const lead = featured ?? projects[0];
   const showFeatured =
     lead && (filter === "all" || filter === lead.sector);
   const gridItems = projects

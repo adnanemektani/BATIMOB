@@ -41,3 +41,7 @@ yarn-error.log*
 next-env.d.ts
 
 server.log
+
+# scripts one-off (fichiers generes)
+.sanity-assets.json
+scripts/verif-batifenetre.txt
